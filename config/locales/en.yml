@@ -20,4 +20,23 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  submit: Submit
+  hello: Hello world
+  submit: Submit
+  email: 'Email address:'
+  attachment: 'Optional attachment:'
+  subject: 'Subject:'
+  name: 'Name:'
+  comment: 'Your Comment:'
+  file_name: 'Attachment name:'
+  subject: 'Someone has sent you a contact request'
+  contact_requests:
+    new:
+      hello: Hello world
+      submit: Submit
+      email: 'Email address:'
+      attachment: 'Optional attachment:'
+      subject: 'Subject:'
+      name: 'Name:'
+      comment: 'Your Comment:'
+      file_name: 'Attachment name:'

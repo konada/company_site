@@ -1,0 +1,25 @@
+.col-xs-8
+  .panel.panel-primary
+    .panel-heading Please fill in contact form:
+    .panel-body
+      .container
+        .form-group.form-horizontal
+          = simple_form_for @contact_request, url: contact_request_path do |f|
+            %label
+              = t('.name')
+            = f.input :name, label: false, as: :string
+            %label
+            = t('.email')
+            = f.input :email,label: false, as: :string
+            %label
+            = t('.subject')
+            = f.input :subject,label: false, as: :string
+            %label
+            = t('.comment')
+            = f.input :comment,label: false, as: :string
+            %label
+            = t('.attachment')
+            = f.input :file, as: :file
+
+            = f.submit I18n.t('.submit')
+
