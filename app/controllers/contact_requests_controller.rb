@@ -2,7 +2,7 @@ class ContactRequestsController < ApplicationController
   before_filter :admin_user, only: :index
 
   def index
-    @contact_request = ContactRequest.all
+    @contact_requests = ContactRequest.all
   end
 
   def new
@@ -10,8 +10,12 @@ class ContactRequestsController < ApplicationController
   end
 
   def create
-    @contact_request = ContactRequest.create(contact_params)
-    redirect_to root_path
+    @contact_request = ContactRequest.new(contact_params)
+    if @contact_request.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private

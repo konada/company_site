@@ -24,7 +24,7 @@
               = I18n.t('.file_preview')
             %th Created_at:
         %tbody
-          - @contact_request.each do |contact_request|
+          - @contact_requests.each do |contact_request|
             %tr
               %td= contact_request.name
               %td= contact_request.email
