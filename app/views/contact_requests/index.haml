@@ -1,0 +1,38 @@
+- if user_signed_in?
+  %li
+    = link_to('Logout', destroy_user_session_path, :method => :delete)
+- else
+  %li
+    = link_to('Login', new_user_session_path)
+.col-xs-8
+  .panel.panel-primary
+    .panel-heading All contact requests:
+    .panel-body
+    .container
+      %table.table.table-hover
+        %thead
+          %tr
+            %th
+              = I18n.t('.name')
+            %th
+              = I18n.t('.email')
+            %th
+              = I18n.t('.subject_line')
+            %th
+              = I18n.t('.comment')
+            %th
+              = I18n.t('.file_preview')
+            %th Created_at:
+        %tbody
+          - @contact_request.each do |contact_request|
+            %tr
+              %td= contact_request.name
+              %td= contact_request.email
+              %td= contact_request.subject
+              %td= contact_request.comment
+              %td
+                - if contact_request.file.url.include? 'missing.png'
+                  = 'n/a'
+                - else
+                  = link_to (image_tag contact_request.file.url), contact_request.file.url
+              %td= contact_request.created_at
