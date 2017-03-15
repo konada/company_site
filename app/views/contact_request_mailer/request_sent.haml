@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+  %body
+    %h1
+      The following person has sent you a contact request: #{@contact_request.name}!
+    %p
+      Here are the request details:
+      .container
+        %label
+          = I18n.t('.name')
+        = @contact_request.name
+        %p
+        %label
+          = I18n.t('.email')
+        = @contact_request.email
+        %p
+        %label
+          = I18n.t('.subject')
+        = @contact_request.subject
+        %p
+        %label
+          = I18n.t('.comment')
+        = @contact_request.comment
+        - if @contact_request.file.present?
+          %p
+          %label
+            = I18n.t('.file_name')
+          = @contact_request.file

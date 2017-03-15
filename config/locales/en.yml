@@ -30,6 +30,8 @@ en:
   comment: 'Your Comment:'
   file_name: 'Attachment name:'
   subject: 'Someone has sent you a contact request'
+  file_preview: 'Attachment:'
+  subject_line: 'Subject:'
   contact_requests:
     new:
       hello: Hello world

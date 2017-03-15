@@ -1,6 +1,10 @@
 class ContactRequestsController < ApplicationController
   before_filter :admin_user, only: :index
 
+  def index
+    @contact_request = ContactRequest.all
+  end
+
   def new
     @contact_request = ContactRequest.new
   end
@@ -23,6 +27,6 @@ class ContactRequestsController < ApplicationController
   end
 
   def admin_user
-    redirect_to(root_url) unless current_user.admin?
+    redirect_to(root_url) unless user_signed_in? && current_user.admin?
   end
 end
