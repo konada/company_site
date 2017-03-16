@@ -1,24 +1,11 @@
-# README
+#COMPANY SITE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails project. It renders the contact request form view to be filled by the potential client.
+Admin is notified by email about new contact request.
+Admin panel with list of contact details is available.
 
-Things you may want to cover:
+Ruby version: 2.3.3
+Rails version: 5.0.1
+Database: SQLite version 3
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Testing: RSpec
