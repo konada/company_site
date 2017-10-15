@@ -18,6 +18,8 @@ class ContactRequest < ApplicationRecord
                         }
   after_save :send_email
 
+  belongs_to :user, optional: true
+
   private
 
   def send_email
