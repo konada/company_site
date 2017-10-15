@@ -1,21 +1,39 @@
 class ContactRequestsController < ApplicationController
-  before_filter :admin_user, only: :index
+  before_action :set_contact_request, only: [:show, :update, :destroy]
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
     @contact_requests = ContactRequest.all
+    authorize @contact_requests
+  end
+
+  def show
   end
 
   def new
     @contact_request = ContactRequest.new
+    authorize @contact_request
+  end
+
+  def edit
   end
 
   def create
     @contact_request = ContactRequest.new(contact_params)
+    @contact_request.user = current_user if current_user
+    authorize @contact_request
     if @contact_request.save
       redirect_to root_path
+      flash[:success] = 'Contact request was successfully created.'
     else
-      render :new
+      render 'new'
     end
+  end
+
+  def destroy
+    @contact_request.destroy
+    redirect_to admin_path
+    flash[:success] = 'Contact request was successfully destroyed.'
   end
 
   private
@@ -26,11 +44,18 @@ class ContactRequestsController < ApplicationController
       :email,
       :subject,
       :comment,
-      :file
+      :file,
+      :user_id
     )
   end
 
-  def admin_user
-    redirect_to(root_url) unless user_signed_in? && current_user.admin?
+  def set_contact_request
+    @contact_request = ContactRequest.find(params[:id])
+    authorize @contact_request
+  end
+
+  def user_not_authorized
+    flash[:warning] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
   end
 end
