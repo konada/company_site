@@ -1,3 +1,8 @@
+- flash.each do |key, value|
+  .alert{ :class => "alert-#{key}" }
+    %button.close{ :data => { :dismiss => "alert" } } x
+    %strong
+      = value
 .col-xs-12
   .panel.panel-primary
     .panel-heading All contact requests:
@@ -6,6 +11,8 @@
       %table.table.table-hover
         %thead
           %tr
+            %th
+              = I18n.t('.user_login')
             %th
               = I18n.t('.name')
             %th
@@ -20,6 +27,7 @@
         %tbody
           - @contact_requests.each do |contact_request|
             %tr
+              %td= contact_request.try(:user).try(:email) || 'Guest'
               %td= contact_request.name
               %td= contact_request.email
               %td= contact_request.subject

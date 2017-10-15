@@ -32,6 +32,7 @@ en:
   subject: 'Someone has sent you a contact request'
   file_preview: 'Attachment:'
   subject_line: 'Subject:'
+  user_login: User Login
   contact_requests:
     new:
       hello: Hello world
