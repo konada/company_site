@@ -1,10 +1,4 @@
-- if user_signed_in?
-  %li
-    = link_to('Logout', destroy_user_session_path, :method => :delete)
-- else
-  %li
-    = link_to('Login', new_user_session_path)
-.col-xs-8
+.col-xs-12
   .panel.panel-primary
     .panel-heading All contact requests:
     .panel-body
@@ -36,3 +30,9 @@
                 - else
                   = link_to (image_tag contact_request.file.url), contact_request.file.url
               %td= contact_request.created_at
+- if user_signed_in?
+  %li
+    = link_to('Logout', destroy_user_session_path, :method => :delete)
+- else
+  %li
+    = link_to('Login', new_user_session_path)

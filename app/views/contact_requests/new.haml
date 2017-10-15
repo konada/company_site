@@ -1,10 +1,4 @@
-- if user_signed_in?
-  %li
-    = link_to('Logout', destroy_user_session_path, :method => :delete)
-- else
-  %li
-    = link_to('Login', new_user_session_path)
-.col-xs-8
+.col-xs-12
   .panel.panel-primary
     .panel-heading Please fill in contact form:
     .panel-body
@@ -18,4 +12,10 @@
             = f.input :file, label: t('.attachment'), as: :file
 
             = f.submit I18n.t('.submit')
+- if user_signed_in?
+  %li
+    = link_to('Logout', destroy_user_session_path, :method => :delete)
+- else
+  %li
+    = link_to('Login', new_user_session_path)
 
