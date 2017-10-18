@@ -3,6 +3,7 @@
     %button.close{ :data => { :dismiss => "alert" } } x
     %strong
       = value
+= @current_user.present? ? @current_user.email : "guest"
 .col-xs-12
   .panel.panel-primary
     .panel-heading Please fill in contact form:
