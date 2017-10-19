@@ -23,6 +23,8 @@
             = view_object(:contact_request_errors, form: @contact_request, attribute: :file).html
 
             = f.submit I18n.t('.submit')
+  %p
+    = link_to('Dissatisfied with our products? please fill in the complaint form', complaint_path)
 - if user_signed_in?
   %p
     = link_to('Logout', destroy_user_session_path, :method => :delete)

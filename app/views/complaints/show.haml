@@ -1,0 +1,18 @@
+- flash.each do |key, value|
+  .alert{ :class => "alert-#{key}" }
+    %button.close{ :data => { :dismiss => "alert" } } x
+    %strong
+      = value
+.col-xs-12
+  .panel.panel-primary
+    .panel-heading Complaint Form, please fill the form:
+    .panel-body
+      .container
+        .form-group.form-horizontal
+          = simple_form_for @complaint_form, url: complaint_path do |f|
+            = f.input :name, label: t('.name'), as: :string, required: true
+            = f.input :product, collection: [ "P1, P2, P2S", "Helvetica, Boombox, cocacola, zippo"],
+                                            label: t('.product'), required: true
+            = f.input :email, label: t('.email'), as: :email, required: true
+            = f.input :body, label: t('.complaint'), as: :text, required: true
+            = f.submit I18n.t('.submit')

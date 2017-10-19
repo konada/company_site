@@ -33,6 +33,7 @@ en:
   file_preview: 'Attachment:'
   subject_line: 'Subject:'
   user_login: User Login
+  product: 'Product:'
   contact_requests:
     new:
       hello: Hello world
@@ -43,3 +44,10 @@ en:
       name: 'Name:'
       comment: 'Your Comment:'
       file_name: 'Attachment name:'
+  complaints:
+    show:
+      product: 'Product:'
+      submit: Submit
+      email: 'Email address:'
+      subject: 'Subject:'
+      complaint: 'Complaint:'
