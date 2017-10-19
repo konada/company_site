@@ -2,6 +2,8 @@ class ContactRequest < ApplicationRecord
   validates :name, :email, :subject, :comment, presence: true
   validates_format_of :email,
                       with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  validates_format_of :name,
+                      with: /\A(?=.* )[^0-9`!@#\\\$%\^&*\;+_=]{4,}\z/i
 
   has_attached_file :file
   validates_attachment :file,

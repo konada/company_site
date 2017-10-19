@@ -12,10 +12,15 @@
         .form-group.form-horizontal
           = simple_form_for @contact_request, url: contact_requests_path do |f|
             = f.input :name, label: t('.name'), as: :string, required: true
+            = view_object(:contact_request_errors, form: @contact_request, attribute: :name).html
             = f.input :email, label: t('.email'), as: :string, required: true
+            = view_object(:contact_request_errors, form: @contact_request, attribute: :email).html
             = f.input :subject,label: t('.subject'), as: :string, required: true
+            = view_object(:contact_request_errors, form: @contact_request, attribute: :subject).html
             = f.input :comment,label: t('.comment'), as: :string, required: true
+            = view_object(:contact_request_errors, form: @contact_request, attribute: :comment).html
             = f.input :file, label: t('.attachment'), as: :file
+            = view_object(:contact_request_errors, form: @contact_request, attribute: :file).html
 
             = f.submit I18n.t('.submit')
 - if user_signed_in?
