@@ -3,7 +3,7 @@ class ContactRequestsController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
-    @contact_requests = ContactRequest.all
+    @contact_requests = OrderedContactRequestsQuery.new(sort_query_params).all.page(params[:page]).per(6)
     authorize @contact_requests
   end
 
@@ -57,5 +57,9 @@ class ContactRequestsController < ApplicationController
   def user_not_authorized
     flash[:warning] = "You are not authorized to perform this action."
     redirect_to(request.referrer || root_path)
+  end
+
+  def sort_query_params
+    params.slice(:sort_by, :direction)
   end
 end

@@ -3,6 +3,8 @@
     %button.close{ :data => { :dismiss => "alert" } } x
     %strong
       = value
+= link_to('By author - ascending', contact_requests_path(sort_by: :by_author, direction: :asc))
+= link_to('By author - descending', contact_requests_path(sort_by: :by_author, direction: :desc))
 .col-xs-12
   .panel.panel-primary
     .panel-heading All contact requests:
@@ -38,6 +40,8 @@
                 - else
                   = link_to (image_tag contact_request.file.url), contact_request.file.url
               %td= contact_request.created_at
+    = paginate @contact_requests
+    = page_entries_info @contact_requests
 - if user_signed_in?
   %p
     = link_to('Logout', destroy_user_session_path, :method => :delete)

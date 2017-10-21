@@ -1,4 +1,8 @@
 class ContactRequest < ApplicationRecord
+  scope :by_subject, ->(direction) { order subject: direction }
+  scope :by_date, ->(direction) { order created_at: direction }
+  scope :by_author, ->(direction) { order name: direction}
+
   validates :name, :email, :subject, :comment, presence: true
   validates_format_of :email,
                       with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
