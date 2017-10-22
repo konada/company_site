@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resource :complaint
   root 'contact_requests#new'
   get 'admin', to: 'contact_requests#index'
+
+  mount ContactRequestApi::V1 => '/'
+  mount GrapeSwaggerRails::Engine, at: "/documentation"
 end
