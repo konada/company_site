@@ -4,12 +4,8 @@ FactoryGirl.define do
     created_at Time.now
     password 'password1111'
 
-
     trait :admin do
-    admin true
-    end
-
-    trait :regular_user do
+      admin true
     end
   end
 end

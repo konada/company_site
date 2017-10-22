@@ -1,15 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe ContactRequestsController do
+  let!(:user) { create(:user) }
+  let!(:admin) { create(:user, :admin) }
 
   describe 'GET #new' do
     it 'assigns a new Contact to @contact_request' do
       contact_request = FactoryGirl.build(:contact_request)
-        ContactRequest.stub(:new).and_return(contact_request)
+      ContactRequest.stub(:new).and_return(contact_request)
 
-        get :new
+      get :new
 
-        assigns(:contact_request).should == contact_request
+      assigns(:contact_request).should == contact_request
     end
   end
 
@@ -21,13 +23,22 @@ RSpec.describe ContactRequestsController do
                 }.to change(ContactRequest, :count).by(1)
       end
     end
+  end
 
   describe 'GET #index' do
-    it "should let an admin see all the posts" do
-      user = FactoryGirl.create(:user, :admin)
-      sign_in :user, user
-      get :index
-      expect( response ).to render_template( :index )
+    context 'admin logged in' do
+      it "should see all the posts" do
+        sign_in :user, admin
+        get :index
+        expect(response).to render_template(:index)
+      end
+    end
+
+    context 'normal user logged in' do
+      it "should not have an access to index" do
+        sign_in :user, user
+        get :index
+        expect(response).to redirect_to(root_path)
       end
     end
   end
