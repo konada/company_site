@@ -2,26 +2,9 @@ en:
   admin_panel: 'Admin Panel'
   attachment: 'Optional attachment:'
   comment: 'Your Comment:'
-  email: 'Email address:'
-  file_name: 'Attachment name:'
-  file_preview: 'Attachment:'
-  login: 'Login'
-  logout: 'Logout'
-  mail_subject: 'New complaint form'
-  name: 'Name:'
-  product: 'Product:'
-  subject: 'Subject:'
-  subject_line: 'Subject:'
-  submit: 'Submit'
-  user_login: User Login
   complaint_mailer:
     send_message:
       complaint: 'Complaint:'
-      email: 'Email address:'
-      product: 'Product:'
-      subject: 'Subject:'
-      submit: Submit
-      complaint_header: "Here are the complaint's details:"
   complaints:
     new:
       complaint: 'Complaint:'
@@ -36,10 +19,25 @@ en:
     new:
       attachment: 'Optional attachment:'
       comment: 'Your Comment:'
+      complaint_header: "Here are the complaint's details:"
+      complaint_link: 'Dissatisfied with our products? please fill in the complaint form'
       email: 'Email address:'
       file_name: 'Attachment name:'
       name: 'Name:'
+      product: 'Product:'
       subject: 'Subject:'
       submit: 'Submit'
-      complaint_link: 'Dissatisfied with our products? please fill in the complaint form'
-
+  email: 'Email address:'
+  file_name: 'Attachment name:'
+  file_preview: 'Attachment:'
+  login: 'Login'
+  logout: 'Logout'
+  mail_subject: 'New complaint form'
+  more_details: More details
+  name: 'Name:'
+  product: 'Product:'
+  subject: 'Subject:'
+  subject_line: 'Subject:'
+  submit: 'Submit'
+  user_login: User Login
+  user_admin: Admin rights?
