@@ -1,6 +1,6 @@
 - flash.each do |key, value|
-  .alert{ :class => "alert-#{key}" }
-    %button.close{ :data => { :dismiss => "alert" } } x
+  .alert{ class: "alert-#{key}" }
+    %button.close{ data: { dismiss: "alert" } } x
     %strong
       = value
 = link_to('By author - ascending', contact_requests_path(sort_by: :by_author, direction: :asc))
@@ -16,35 +16,31 @@
             %th
               = I18n.t('.user_login')
             %th
+              = I18n.t('.user_admin')
+            %th
               = I18n.t('.name')
             %th
               = I18n.t('.email')
             %th
               = I18n.t('.subject_line')
             %th
-              = I18n.t('.comment')
-            %th
-              = I18n.t('.file_preview')
-            %th Created_at:
+              = I18n.t('.more_details')
+
         %tbody
           - @contact_requests.each do |contact_request|
             %tr
-              %td= contact_request.try(:user).try(:email) || 'Guest'
+              - @user = contact_request.user || NullUser.new
+              %td= @user.email
+              %td= @user.admin
               %td= contact_request.name
               %td= contact_request.email
               %td= contact_request.subject
-              %td= contact_request.comment
-              %td
-                - if contact_request.file.url.include? 'missing.png'
-                  = 'n/a'
-                - else
-                  = link_to (image_tag contact_request.file.url), contact_request.file.url
-              %td= contact_request.created_at
+              %td= link_to "Details", contact_request_path(contact_request)
     = paginate @contact_requests
     = page_entries_info @contact_requests
 - if user_signed_in?
   %p
-    = link_to('Logout', destroy_user_session_path, :method => :delete)
+    = link_to('Logout', destroy_user_session_path, method: :delete)
 - else
   %p
     = link_to('Login', new_user_session_path)
