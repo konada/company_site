@@ -29,9 +29,9 @@
         %tbody
           - @contact_requests.each do |contact_request|
             %tr
-              - @user = contact_request.user || NullUser.new
-              %td= @user.email
-              %td= @user.admin
+              - user = contact_request.user
+              %td= user.email
+              %td= user.admin
               %td= contact_request.name
               %td= contact_request.email
               %td= contact_request.subject

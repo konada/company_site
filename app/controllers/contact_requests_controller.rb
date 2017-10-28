@@ -8,7 +8,7 @@ class ContactRequestsController < ApplicationController
   end
 
   def show
-    @user = @contact_request.user || NullUser.new
+    @user = @contact_request.user
   end
 
   def new
