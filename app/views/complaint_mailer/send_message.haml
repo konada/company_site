@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+  %body
+    %h1
+      = t('.complaint_header')
+    .container
+      %label
+        = t('.name')
+      = @complaint[:name]
+      %p
+      %label
+        = t('.product')
+      = @complaint[:product]
+      %p
+      %label
+        = t('.email')
+      = @complaint[:email]
+      %p
+      %label
+        = t('.complaint')
+      = @complaint[:body]

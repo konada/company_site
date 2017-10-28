@@ -1,53 +1,45 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  submit: Submit
-  hello: Hello world
-  submit: Submit
-  email: 'Email address:'
+  admin_panel: 'Admin Panel'
   attachment: 'Optional attachment:'
-  subject: 'Subject:'
-  name: 'Name:'
   comment: 'Your Comment:'
+  email: 'Email address:'
   file_name: 'Attachment name:'
-  subject: 'Someone has sent you a contact request'
   file_preview: 'Attachment:'
-  subject_line: 'Subject:'
-  user_login: User Login
+  login: 'Login'
+  logout: 'Logout'
+  mail_subject: 'New complaint form'
+  name: 'Name:'
   product: 'Product:'
+  subject: 'Subject:'
+  subject_line: 'Subject:'
+  submit: 'Submit'
+  user_login: User Login
+  complaint_mailer:
+    send_message:
+      complaint: 'Complaint:'
+      email: 'Email address:'
+      product: 'Product:'
+      subject: 'Subject:'
+      submit: Submit
+      complaint_header: "Here are the complaint's details:"
+  complaints:
+    new:
+      complaint: 'Complaint:'
+      email: 'Email address:'
+      please_fill: 'Complaint Form, please fill the form:'
+      product: 'Product:'
+      subject: 'Subject:'
+      submit: Submit
+    create:
+      complaint_info: 'Your complaint will be investigated soon!'
   contact_requests:
     new:
-      hello: Hello world
-      submit: Submit
-      email: 'Email address:'
       attachment: 'Optional attachment:'
-      subject: 'Subject:'
-      name: 'Name:'
       comment: 'Your Comment:'
-      file_name: 'Attachment name:'
-  complaints:
-    show:
-      product: 'Product:'
-      submit: Submit
       email: 'Email address:'
+      file_name: 'Attachment name:'
+      name: 'Name:'
       subject: 'Subject:'
-      complaint: 'Complaint:'
+      submit: 'Submit'
+      complaint_link: 'Dissatisfied with our products? please fill in the complaint form'
+

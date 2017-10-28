@@ -36,7 +36,6 @@ group :development, :test do
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'ffaker'
-  gem 'letter_opener'
   gem 'rails-controller-testing'
   gem 'rspec-activejob'
   gem 'rspec-activemodel-mocks'
@@ -46,6 +45,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

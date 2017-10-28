@@ -1,15 +1,16 @@
 class ComplaintsController < ApplicationController
-  def show
+  def new
     @complaint_form = ComplaintForm.new
   end
 
   def create
     @complaint_form = ComplaintForm.new(complaint_form_params)
+
     if @complaint_form.save
-      redirect_to complaint_path
-      flash[:success] =  "Your complaint will be investigated soon!"
+      redirect_to new_complaint_path
+      flash[:success] =  t('.complaint_info')
     else
-      render action: :show
+      render action: :new
     end
   end
 
