@@ -1,9 +1,12 @@
 en:
+  admin_panel: 'Admin Panel'
   attachment: 'Optional attachment:'
   comment: 'Your Comment:'
   email: 'Email address:'
   file_name: 'Attachment name:'
   file_preview: 'Attachment:'
+  login: 'Login'
+  logout: 'Logout'
   mail_subject: 'New complaint form'
   name: 'Name:'
   product: 'Product:'
@@ -38,4 +41,5 @@ en:
       name: 'Name:'
       subject: 'Subject:'
       submit: 'Submit'
+      complaint_link: 'Dissatisfied with our products? please fill in the complaint form'
 

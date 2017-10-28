@@ -4,7 +4,5 @@ FactoryGirl.define do
       product { FFaker::Product.product }
       email { FFaker::Internet.email }
       body { FFaker::Lorem.phrase }
-
-      initialize_with { new(attributes) }
     end
   end
