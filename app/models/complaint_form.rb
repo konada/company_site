@@ -8,10 +8,16 @@ class ComplaintForm
 
   def save
     if valid?
-      ComplaintMailer.message(email).deliver_later
+      ComplaintMailer.send_message(form_info).deliver_later
       true
     else
       false
     end
+  end
+
+  private
+
+  def form_info
+    { name: name, product: product, email: email, body: body }
   end
 end
