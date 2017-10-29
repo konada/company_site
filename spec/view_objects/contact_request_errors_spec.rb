@@ -1,31 +1,27 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ContactRequestErrors do
-  subject { ContactRequestErrors.new(context, form: form, attribute: attribute) }
-  let(:context) { double }
-  let(:attribute) { :name }
-  let(:error_message) { "Name cannot be blank!" }
+  subject { described_class.new(form: form, attribute: :name) }
 
-  describe '#html' do
-    context 'when form has errors' do
-      let(:form) do
-        double(errors: { attribute => ["Name cannot be blank!"] })
-      end
-      it 'returns correct html' do
-        allow(subject).to receive(:error_message).and_return(error_message)
-        correct_html = '<div class="alert alert-danger col-xs-12">Name cannot be blank!</div>'
-
-        expect(subject.html).to eq correct_html
-      end
+  shared_examples_for 'contact request errors #html' do |error = nil, html = nil|
+    let(:form) do
+      form = ContactRequest.new
+      form.errors[:name] = error unless error.nil?
+      form
     end
 
-    context 'when form does not have any errors' do
-      let(:form) do
-        double(errors: { attribute => [] })
-      end
-      it 'returns nil' do
-        expect(subject.html).to eq nil
-      end
+    it 'returns correct html' do
+      expect(subject.html).to eq html
     end
+  end
+
+  context 'when form has errors' do
+    it_behaves_like 'contact request errors #html',
+                    'is invalid!',
+                    '<div class="alert alert-danger col-xs-12">Name is invalid!</div>'
+  end
+
+  context 'when form does not have any errors' do
+    it_behaves_like 'contact request errors #html'
   end
 end
