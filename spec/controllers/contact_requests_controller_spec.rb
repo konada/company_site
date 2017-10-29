@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ContactRequestsController do
-  let!(:user) { create(:user) }
-  let!(:admin) { create(:user, :admin) }
+  let(:user) { create(:user) }
+  let(:admin) { create(:user, :admin) }
 
   describe 'GET #new' do
     it 'assigns a new Contact to @contact_request' do
