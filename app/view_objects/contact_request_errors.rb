@@ -4,6 +4,7 @@ class ContactRequestErrors < BaseViewObject
   end
 
   private
+
   attr_reader :form, :attribute, :errors
 
   def after_init(args = {})
