@@ -16,6 +16,6 @@ class OrderedContactRequestsQuery
   end
 
   def direction
-    @params[:direction] == "asc" ? :asc : :desc
+    @params[:direction] == 'asc' ? :asc : :desc
   end
 end

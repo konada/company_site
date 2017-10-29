@@ -1,25 +1,36 @@
-require "rails_helper"
+require 'rails_helper'
 
 describe OrderedContactRequestsQuery do
-  describe "#by_author" do
-    before do
-      create :contact_request, name: "Zenon Martyniuk", created_at: Time.now - 2.days
-      create :contact_request, name: "Lech Wałęsa", created_at: Time.now - 1.days
-      create :contact_request, name: "Adam Małysz"
+  before do
+    create :contact_request, name: 'Lech Wałęsa', subject: 'B'
+    create :contact_request, name: 'Adam Małysz', subject: 'C'
+    create :contact_request, name: 'Zenon Martyniuk', subject: 'A'
+  end
+
+  shared_examples_for 'custom scope' do |sort_by, first_item|
+    let(:params) { { sort_by: sort_by } }
+    let(:query) { described_class.new(params).all }
+
+    it 'orders items ascending' do
+      params[:direction] = 'asc'
+      expect(query.first.name).to eq(first_item)
     end
 
-    it "ascending - returns first element alphabeticaly by author" do
-      params = { sort_by: "by_author", direction: "asc" }
-            query = described_class.new(params).all
-
-            expect(query.first.name).to eq("Adam Małysz")
-          end
-
-     it "descending - returns last element alphabeticaly by author" do
-      params = { sort_by: "by_author", direction: "desc" }
-      query = described_class.new(params).all
-
-      expect(query.first.name).to eq("Zenon Martyniuk")
+    it 'orders items descending' do
+      params[:direction] = 'desc'
+      expect(query.last.name).to eq(first_item)
     end
+  end
+
+  context 'returns items by author' do
+    it_behaves_like 'custom scope', 'by_author','Adam Małysz'
+  end
+
+  context 'returns items by date' do
+    it_behaves_like 'custom scope', 'by_date', 'Lech Wałęsa'
+  end
+
+  context 'returns items by subject' do
+    it_behaves_like 'custom scope', 'by_subject', 'Zenon Martyniuk'
   end
 end
