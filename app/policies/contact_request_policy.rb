@@ -3,6 +3,10 @@ class ContactRequestPolicy < ApplicationPolicy
     return true if user_admin?
   end
 
+  def show?
+    return true if user_admin?
+  end
+
   def new?
     true
   end

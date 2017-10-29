@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe ContactRequest do
+  let(:contact_request) { create(:contact_request) }
+
   describe 'factory' do
-    let(:contact_request) { FactoryGirl.create(:contact_request) }
     it 'is valid' do
       expect(contact_request).to be_valid
     end
@@ -20,6 +21,14 @@ RSpec.describe ContactRequest do
     end
     it 'invalid file is not saved' do
       expect(invalid_contact_request).not_to be_valid
+    end
+  end
+
+  describe 'user' do
+    it 'assigns null user if user is not present' do
+      expect(contact_request.user.class).to eq NullObjects::NullUser
+      expect(contact_request.user.email).to eq 'N/A'
+      expect(contact_request.user.admin).to eq false
     end
   end
 end

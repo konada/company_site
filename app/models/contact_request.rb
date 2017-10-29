@@ -26,6 +26,10 @@ class ContactRequest < ApplicationRecord
 
   belongs_to :user, optional: true
 
+  def user
+    super || NullObjects::NullUser.new
+  end
+
   private
 
   def send_email
