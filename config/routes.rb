@@ -1,12 +1,29 @@
 Rails.application.routes.draw do
-  devise_for :users
+  root 'products#index'
 
-  resources :contact_requests, only: [:index, :new, :create]
-  resource :complaint, only: [:new, :create]
+  namespace :admin do
+    # controller admin/orders:
+    # module Admin
+    #   class OrdersController
+    resources :orders do
+      # each order has one invoice (nested resource)
+      resource :invoice, only: :show
+    end
+  end
 
-  root 'contact_requests#new'
-  get 'admin', to: 'contact_requests#index'
+  get 'about_us' => 'home#about_us' # in home_controller set up method about_us
+  get 'profile', to: :show, controller: 'users'
 
-  mount ContactRequestApi::V1 => '/'
-  mount GrapeSwaggerRails::Engine, at: "/documentation"
+  resources :products do
+    collection do
+      # search for all products
+      get 'search'
+    end
+
+    get 'full_description', as: :full_desc # by default it's on member
+  end
+
+  %w( 403 404 422 500 ).each do |code|
+    get code, to: 'errors#show', code: code
+  end
 end
