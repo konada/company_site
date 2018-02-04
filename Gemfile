@@ -8,6 +8,7 @@ end
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'dotenv-rails'
 gem 'grape'
 gem 'grape-swagger'
 gem 'grape-swagger-rails'
