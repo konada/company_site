@@ -35,7 +35,7 @@
               %td= contact_request.name
               %td= contact_request.email
               %td= contact_request.subject
-              %td= link_to "Details", contact_request_path(contact_request)
+              %td= link_to "Details", contact_request_path(contact_request.id)
     = paginate @contact_requests
     = page_entries_info @contact_requests
 - if user_signed_in?

@@ -1,4 +1,4 @@
-      - flash.each do |key, value|
+- flash.each do |key, value|
   .alert{ class: "alert-#{key}" }
     %button.close{ data: { dismiss: "alert" } } x
     %strong
@@ -10,7 +10,7 @@
     .panel-body
       .container
         .form-group.form-horizontal
-          = simple_form_for @contact_request, url: contact_requests_path do |f|
+          = simple_form_for @contact_request, html: { multipart: true },  url: contact_requests_path do |f|
             = f.input :name, label: t('.name'), as: :string, required: true
             = view_object(:contact_request_errors, form: @contact_request, attribute: :name).html
             = f.input :email, label: t('.email'), as: :string, required: true
