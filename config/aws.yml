@@ -1,0 +1,8 @@
+development:
+  s3_endpoint: localhost
+  s3_port: 10001
+  s3_force_path_style: true  # bucket name as path instead of domain
+  use_ssl: false
+  bucket: bucketname
+  access_key_id: AWS_ACCESS_KEY_ID
+  secret_access_key: AWS_SECRET_KEY

@@ -83,4 +83,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+   config.paperclip_defaults = { storage: :s3 }
+
+  s3 = Aws::S3::Client.new(
+                            access_key_id: '123',
+                            secret_access_key:'abc',
+                            region: 'region us-west-1',
+                            endpoint: 'http://localhost:4567/',
+                            force_path_style: true)
 end
