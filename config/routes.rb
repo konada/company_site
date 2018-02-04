@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :contact_requests, only: [:index, :new, :create]
+  resources :contact_requests, only: [:index, :new, :create, :show]
   resource :complaint, only: [:new, :create]
 
   root 'contact_requests#new'
